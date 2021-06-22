@@ -27,7 +27,7 @@
                                 <input type="password" @keyup.enter="login" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
 
-                             <div class="form-group">
+                             <div class="form-group loginbtn">
                                 <button class="btn btn-primary" @click="login">Login</button>
                             </div>
 
@@ -50,7 +50,7 @@
                                 <input type="password" v-model="password" class="form-control" id="password" placeholder="Password">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group loginbtn">
                                 <button class="btn btn-primary" @click="register">Signup</button>
                             </div>
 
@@ -125,5 +125,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+.loginbtn{
+  margin-top: 5px;
+}
 </style>
