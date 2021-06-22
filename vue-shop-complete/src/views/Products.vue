@@ -12,15 +12,59 @@
            </div>
          </div>
       </div>
+      
+      <hr>
+
+      <h3>Basic CRUD in firebase with vue</h3>
+
+      <div class="product-test">
+        <div class="form-group">
+          <input type="text" placeholder="Product Name" v-model="product.name" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" placeholder="Product Price" v-model="product.price" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <button @click="saveData" class="btn btn-primary">Save data</button>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
+import { fb, db } from '../firebase'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String,
   },
+  data() {
+    return {
+      product: {
+        name: null,
+        price: null
+      }
+    }
+  },
+  methods: {
+    saveData() {
+      db.collection("products").add(this.product)
+      .then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+          this.resetForm();
+      })
+      .catch((error) => {
+          console.error("Error adding document: ", error);
+      });
+    },
+    
+    resetForm(){
+      Object.assign(this.$data, this.$options.data.apply(this));
+    }
+  }
 };
 </script>
 
