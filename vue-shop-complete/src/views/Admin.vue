@@ -103,6 +103,7 @@
 <script>
 // @ is an alias to /src
 import Hero from "@/components/Hero.vue";
+import { fb } from "../firebase";
 
 
 export default {
@@ -115,6 +116,15 @@ export default {
       closeMenu(){
         $(".page-wrapper").toggleClass("toggled");
       },
+      logout(){
+        fb.auth().signOut()
+        .then(() => {
+            this.$router.replace('/');
+        })
+        .catch(() => {
+            console.log(err)
+        });
+      }
   }
 
 };
