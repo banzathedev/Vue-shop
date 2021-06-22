@@ -5,15 +5,18 @@ import store from './store';
 import 'bootstrap';
 import Jquery from 'jquery';
 
-window.$ = window.Jquery = jQuery;
+
 
 import 'popper.js';
 import './assets/app.scss';
+
+Vue.component('Navbar', require('./components/Navbar.vue').default);
 
 
 Vue.config.productionTip = false;
 
 new Vue({
+  Jquery,
   router,
   store,
   render: (h) => h(App),
